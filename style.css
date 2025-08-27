@@ -1,0 +1,178 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Times New Roman", Times, serif;
+  font-weight: bold;
+}
+
+body {
+  height: 100vh;
+  padding: 1rem;
+  overflow: hidden;
+  background-image: url("https://images.unsplash.com/photo-1506744038136-46273834b3fb?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80");
+  background-size: cover;
+  background-position: center;
+}
+
+@media (max-width: 600px) {
+  .content {
+    padding: 0.5rem;
+  }
+  .inputfield {
+    width: 100%;
+    padding: 4px;
+  }
+  input {
+    width: 50%;
+    font-size: 1rem;
+  }
+}
+
+.content {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.inputfield {
+  padding: 10px;
+  margin: 10px;
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  gap: 10px;
+}
+
+input {
+  border: 1px solid aqua;
+  padding: 7px;
+  margin: 0;
+}
+
+.submit {
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+.gradient-card {
+  background: linear-gradient(
+    to bottom,
+    rgba(255, 255, 255, 0.3),
+    #ffffff 90%
+  ) !important;
+  /* backdrop-filter: blur(50px); */
+  /* -webkit-backdrop-filter: blur(20px); */
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 20px 20px !important;
+}
+
+.card-body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.card-body h1,
+.card-body h2 {
+  font-weight: bold;
+}
+
+.moreinfo {
+  gap: 25px;
+}
+
+.humidity,
+.RainSpeed,
+.WindSpead {
+  display: inline-flex;
+  align-items: center;
+  gap: 2px;
+}
+.card-body p {
+  font-size: 12px;
+  font-weight: lighter !important;
+}
+
+.moreweatherinfo {
+  width: 95%;
+  display: grid;
+  grid-template-columns: auto auto auto auto;
+  font-size: small;
+}
+
+.moreweatherinfo span {
+  text-align: center;
+  border: 1px solid gray;
+  padding: 4px;
+  background-color: rgb(217, 214, 214) !important;
+}
+.moreweatherinfo span:first-child {
+  border-top-left-radius: 10px;
+}
+
+.moreweatherinfo span:last-child {
+  border-top-right-radius: 10px;
+  border-bottom-left-radius: transparent;
+}
+
+a {
+  text-decoration: none !important;
+  color: rgb(0, 0, 0) !important;
+}
+
+.moreweatherinfo img {
+  margin: 0 auto;
+  text-align: center;
+  height: 3rem !important;
+  width: auto !important;
+}
+
+.day {
+  font-size: 1rem !important;
+}
+
+.today_weather_icon,
+.tomorrow_weather_icon,
+.dayaftertomorrow_weather_icon,
+.overmorrow_weather_icon {
+  filter: none !important;
+  -webkit-filter: none !important;
+  color: unset !important;
+  background: none !important;
+  mix-blend-mode: normal !important;
+}
+.error {
+  font-size: 2rem;
+  display: none;
+}
+
+.high-low {
+  gap: 12px !important;
+}
+
+.weathericons {
+  height: 3rem !important;
+}
+
+.temperature {
+  border: none !important;
+  justify-content: center !important;
+  font-weight: normal !important;
+}
+
+.weather {
+  font-weight: bold !important;
+}
+
+.today_description,
+.tomorrow_description,
+.dayaftertomorrow_description,
+.overmorrow_description {
+  margin-top: -20px !important;
+  display: none;
+}

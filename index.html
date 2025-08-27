@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+    />
+    <title>Weather</title>
+    <link rel="stylesheet" href="style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+      integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQoF+jJ5b78kS0j8q+85WwR434f4h86G5z6Qe0fFz4x0v6w=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+      integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/css/bootstrap.min.css"
+      integrity="sha384-r4NyP46KrjDleawBgD5tp8Y7UzmLA05oM1iAEQ17CSuDqnUK2+k9luXQOfXJCJ4I"
+      crossorigin="anonymous"
+    />
+    <script
+      src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+      integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/js/bootstrap.min.js"
+      integrity="sha384-oesi62hOLfzrys4LxRF63OJCXdXDipiYWBnvTl9Y9/TRlw5xlKIEHpNyvvDShgf/"
+      crossorigin="anonymous"
+    ></script>
+  </head>
+  <body>
+    <div class="content">
+      <div class="inputfield">
+        <input
+          type="text"
+          class="rounded"
+          name="CityName"
+          id="CityName"
+          placeholder="  Enter a City"
+        />
+        <button class="btn btn-success submit" id="submit" type="submit">
+          Fetch Weather
+        </button>
+      </div>
+      <div class="error text-danger">Please Enter a city</div>
+      <div><img src="" class="imageElement" alt="" /></div>
+      <div class="card gradient-card" style="width: 22rem">
+        <div class="card-body">
+          <h2 class="card-title">Place</h2>
+
+          <h1 class="card-text temperature">26°C</h1>
+          <span class="d-flex day-time"><p class="day">Day</p> </span>
+          <h5 class="card-text weather">Cloudy</h5>
+          <span class="d-flex high-low"
+            ><p class="max_temp">H:</p>
+            <p class="min_temp">L:</p></span
+          >
+
+          <div class="moreinfo d-flex justify-content-between">
+            <p class="humidity">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="16"
+                height="16"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.5"
+                viewBox="0 0 24 24"
+                style="vertical-align: middle"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M12 3.25C12 3.25 6.75 9.25 6.75 15a5.25 5.25 0 0 0 10.5 0c0-5.75-5.25-11.75-5.25-11.75z"
+                />
+              </svg>
+              75%
+            </p>
+            <p class="RainSpeed">
+              <i
+                class="fa-solid fa-cloud-rain"
+                style="font-size: 14px; color: grey"
+              ></i>
+              &nbsp; 11 mm
+            </p>
+            <p class="WindSpead">
+              <i
+                class="fas fa-leaf"
+                style="font-size: 16px; color: #bdbdbd"
+              ></i>
+              &nbsp; 15 m/s
+            </p>
+          </div>
+          <div class="moreweatherinfo">
+            <span class="Today"
+              ><a>Today</a> <br />
+              <img src="" class="weathericons today_weather_icon" /> <br />
+              <span class="d-flex temperature"
+                ><p class="today_max_temp"></p>
+                /
+                <p class="today_min_temp"></p>
+                °C
+              </span>
+              <p class="today_description">Clouds</p>
+            </span>
+            <span class="Tomorrow_grid"
+              ><a class="Tomorrow">Sun</a> <br />
+              <img src="" class="weathericons tomorrow_weather_icon" /> <br />
+              <span class="d-flex temperature"
+                ><p class="tomorrow_max_temp"></p>
+                /
+                <p class="tomorrow_min_temp"></p>
+                °C</span
+              >
+              <p class="tomorrow_description">Clouds</p>
+            </span>
+            <span class="dayaftertomorrow_grid"
+              ><a class="dayaftertomorrow">Mon </a> <br />
+              <img src="" class="weathericons dayaftertomorrow_weather_icon" />
+              <br />
+              <span class="d-flex temperature"
+                ><p class="dayaftertomorrow_max_temp"></p>
+                /
+                <p class="dayaftertomorrow_min_temp"></p>
+                °C</span
+              >
+              <p class="dayaftertomorrow_description">Clouds</p>
+            </span>
+            <span class="Overmorrow_grid"
+              ><a class="Overmorrow">Tue</a> <br />
+              <img src="" class="weathericons overmorrow_weather_icon" /> <br />
+              <span class="d-flex temperature"
+                ><p class="overmorrow_max_temp"></p>
+                /
+                <p class="overmorrow_min_temp"></p>
+                °C</span
+              >
+              <p class="overmorrow_description">Clouds</p>
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+  <script src="script.js"></script>
+</html>
