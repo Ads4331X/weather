@@ -16,8 +16,12 @@ body {
 }
 
 @media (max-width: 600px) {
+  body {
+    overflow-y: auto !important;
+  }
   .content {
     padding: 0.5rem;
+    overflow-y: auto !important;
   }
   .inputfield {
     width: 100%;
