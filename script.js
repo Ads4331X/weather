@@ -83,6 +83,44 @@ const apikey = "00e2fe8c9809a585f7e51dccf8818a42";
     let overmorrow_min_temp = document.querySelector(".overmorrow_min_temp"); 
     overmorrow_max_temp.textContent = Math.round(maxTemps[3]);
     overmorrow_min_temp.textContent = Math.round(minTemps[3]);
+
+  let tomorrow_description = document.querySelector(".tomorrow_description");
+  let dayaftertomorrow_description = document.querySelector(".dayaftertomorrow_description");
+  let overmorrow_description = document.querySelector(".overmorrow_description");
+
+
+  tomorrow_description.classList.remove("d-none");
+  dayaftertomorrow_description.classList.remove("d-none");
+  overmorrow_description.classList.remove("d-none");
+
+  tomorrow_description.classList.add("d-block"); 
+  dayaftertomorrow_description.classList.add("d-block");
+  overmorrow_description.classList.add("d-block");
+
+  tomorrow_description.textContent = getweatherdescription(data, 0 , daychangeindices[0]);
+  dayaftertomorrow_description.textContent = getweatherdescription(data, daychangeindices[0] , daychangeindices[1]);
+  overmorrow_description.textContent = getweatherdescription(data, daychangeindices[1] , daychangeindices[2]);
+ }
+
+ function getweatherdescription(data, startIndex , endIndex){
+  let temp = [];
+  let counts = {};
+  let mostFrequent = "";
+  let maxcount = 0;
+  for(let i = startIndex; i < endIndex; i++){
+    let description = daysforcast[i] = data.list[i].weather[0].description;  
+
+    counts[description] = (counts[description] || 0) + 1;
+
+    if(counts[description] > maxcount){
+      maxcount = counts[description];
+      mostFrequent = description;
+    }
+  }
+
+
+  return mostFrequent.charAt(0).toUpperCase() + mostFrequent.slice(1);
+
  }
 
 function weather_icon(data) {
@@ -145,24 +183,13 @@ function dayanddate(){
   let WindSpead = document.querySelector(".WindSpead");
   let rainspeed = document.querySelector(".RainSpeed");
   let weather = document.querySelector(".weather");
-  let today_description = document.querySelector(".today_description");
   let card_title = document.querySelector(".card-title");
-  let tomorrow_description = document.querySelector(".tomorrow_description");
-  let dayaftertomorrow_description = document.querySelector(".dayaftertomorrow_description");
-  let overmorrow_description = document.querySelector(".overmorrow_description");
 
+  let today_description = document.querySelector(".today_description");
   today_description.classList.remove("d-none");
-  tomorrow_description.classList.remove("d-none");
-  dayaftertomorrow_description.classList.remove("d-none");
-  overmorrow_description.classList.remove("d-none");
-
   today_description.classList.add("d-block");
-  tomorrow_description.classList.add("d-block"); 
-  dayaftertomorrow_description.classList.add("d-block");
-  overmorrow_description.classList.add("d-block");
 
   card_title.textContent = currentdata.name;
-
   currentdata.weather[0].description = currentdata.weather[0].description.charAt(0).toUpperCase() + currentdata.weather[0].description.slice(1);
   weather.textContent = currentdata.weather[0].description;
   today_description.textContent = weather.textContent;
