@@ -16,8 +16,10 @@ const apikey = "00e2fe8c9809a585f7e51dccf8818a42";
     Cityname.blur();
     
     if(city === ""){
+      error.textContent = "Please Enter a City Name";
         error.style.display = "block";
     }else{
+      error.style.display = "none";
         let url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apikey}&units=metric`;
         let forecasturl = `https://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=${apikey}&units=metric`;
         let forcast_response = await fetch(forecasturl);
@@ -189,7 +191,12 @@ function dayanddate(){
   let today_description = document.querySelector(".today_description");
   today_description.classList.remove("d-none");
   today_description.classList.add("d-block");
-
+  if(currentdata.cod === "404" || currentdata.cod === "400") {
+    error.textContent = "City Not Found";
+    error.style.display = "block";
+    return;
+  }
+  error.style.display = "none";
   card_title.textContent = currentdata.name;
   currentdata.weather[0].description = currentdata.weather[0].description.charAt(0).toUpperCase() + currentdata.weather[0].description.slice(1);
   weather.textContent = currentdata.weather[0].description;
