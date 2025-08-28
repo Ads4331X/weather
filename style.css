@@ -22,7 +22,7 @@ body {
   .content {
     padding: 0.5rem;
     overflow-y: auto !important;
-    justify-content: space-around !important;
+    justify-content: flex-start !important;
   }
   .inputfield {
     width: 100%;
@@ -31,6 +31,11 @@ body {
   input {
     width: 50%;
     font-size: 1rem;
+  }
+
+  .card {
+    position: relative;
+    top: 15%;
   }
 }
 
