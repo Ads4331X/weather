@@ -1,3 +1,4 @@
+
 let Cityname = document.getElementById("CityName");
 let submit = document.getElementById("submit");
 let error = document.querySelector(".error");
@@ -222,7 +223,89 @@ function dayanddate(){
                 class="fa-solid fa-cloud-rain"
                 style="font-size: 14px; color: grey"
               ></i>&nbsp; ${currentdata.rain ? currentdata.rain["1h"] + " mm" : " 0mm"}`
+
+              animegif(currentdata.weather[0].description);
  }
+
+
+// Remove the 'import nekos from "nekosapi";' line from the top of your script.js
+
+// Function to update the body background image using nekos.best API
+async function animegif(description) { // Renamed from updateBackground to match your existing call
+    // const nekosBestApiUrl = "https://nekos.best/api/v2/"; // Base URL
+
+    // // Map weather descriptions to nekos.best categories.
+    // // IMPORTANT: nekos.best provides random images from predefined categories (e.g., 'hug', 'pat', 'smile', 'waifu', etc.).
+    // // It is NOT a text-to-image generation API, meaning it cannot create a specific scene like "anime character with umbrella in rain".
+    // // All categories on nekos.best are inherently character-focused and often depict actions or emotions.
+    // // If you want more weather-focused backgrounds or less prominent characters, you will need to use a different image generation API (a text-to-image one).
+    // let category = 'waifu'; // Default category chosen to be general, still character-focused.
+
+    // if (description.toLowerCase().includes("rain") || description.toLowerCase().includes("drizzle")) {
+    //     category = 'cry'; // Using 'cry' as a mood-related choice for rain.
+    // } else if (description.toLowerCase().includes("clear") || description.toLowerCase().includes("sun")) {
+    //     category = 'smile'; // Using 'smile' for clear weather.
+    // } else if (description.toLowerCase().includes("snow")) {
+    //     category = 'pat'; // Using 'pat' for snow (no direct snow category).
+    // } else if (description.toLowerCase().includes("cloud")) {
+    //     category = 'neko'; // 'Neko' is a general character category.
+    // } else if (description.toLowerCase().includes("thunderstorm") || description.toLowerCase().includes("storm")) {
+    //     category = 'sleep'; // Using 'sleep' for storms (a more peaceful/safe mood).
+    // }
+
+    // const finalApiUrl = `${nekosBestApiUrl}${category}`;
+
+    // try {
+    //     const response = await fetch(finalApiUrl);
+    //     const data = await response.json();
+
+    //     // nekos.best usually returns an array of results. Get the first one.
+    //     if (data.results && data.results.length > 0 && data.results[0].url) {
+    //         document.body.style.backgroundImage = `url('${data.results[0].url}')`;
+    //         document.body.style.backgroundSize = 'cover';
+    //         document.body.style.backgroundPosition = 'center';
+    //         document.body.style.backgroundRepeat = 'no-repeat';
+    //     } else {
+    //         console.warn("nekos.best API did not return an image URL for the selected category.");
+    //         // Fallback to your default image
+    //         document.body.style.backgroundImage = `url('https://images.unsplash.com/photo-1506744038136-46273834b3fb?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80')`;
+    //     }
+    // } catch (error) {
+    //     console.error("Failed to fetch image from nekos.best:", error);
+    //     // Fallback to your default image
+    //     document.body.style.backgroundImage = `url('https://images.unsplash.com/photo-1506744038136-46273834b3fb?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80')`;
+    // }
+
+
+
+    const apiUrl = 'https://api.waifu.im/search';  
+    let tag = 'waifu';
+    if (description.toLowerCase().includes("rain") || description.toLowerCase().includes("drizzle")) {
+        tag = 'rain'; 
+    } else if (description.toLowerCase().includes("clear") || description.toLowerCase().includes("sun")) {
+        tag = 'sun'; 
+    } else if (description.toLowerCase().includes("snow")) {
+        tag = 'snow'; 
+    } else if (description.toLowerCase().includes("cloud")) {
+        tag = 'cloud'; 
+    } else if (description.toLowerCase().includes("thunderstorm") || description.toLowerCase().includes("storm")) {
+        tag = 'thunderstorm'; 
+    }
+    const finalApiUrl = `${apiUrl}?tag=${tag}&is_nsfw=false&size=regular`; 
+
+        const response = await fetch(finalApiUrl);
+        const data = await response.json();
+        if (data.images && data.images.length > 0 && data.images[0].url) {
+            document.querySelector('.icon').href = data.images[0].url;
+            document.body.style.backgroundSize = 'cover';
+            document.body.style.backgroundPosition = 'center';
+            document.body.style.backgroundRepeat = 'no-repeat';
+        }
+
+
+
+}
+
 
 
 submit.addEventListener("click", fetchweatherdata);
@@ -230,4 +313,3 @@ Cityname.addEventListener("keydown", function(event) {
     if (event.key === "Enter") {
       fetchweatherdata();
     }});
-
