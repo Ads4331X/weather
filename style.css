@@ -22,6 +22,7 @@ body {
   .content {
     padding: 0.5rem;
     overflow-y: auto !important;
+    justify-content: space-around !important;
   }
   .inputfield {
     width: 100%;

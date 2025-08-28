@@ -2,10 +2,13 @@
 let Cityname = document.getElementById("CityName");
 let submit = document.getElementById("submit");
 let error = document.querySelector(".error");
-
+let card = document.querySelector(".card");
 let today = document.querySelector(".day");
 let daysforcast = [];
 let dayfinder;
+
+
+
 
 const apikey = "00e2fe8c9809a585f7e51dccf8818a42";
 
@@ -14,8 +17,9 @@ const apikey = "00e2fe8c9809a585f7e51dccf8818a42";
 
     let city = Cityname.value.toLowerCase().trim();
     Cityname.blur();
-    
-    if(city === ""){
+
+
+    if(city === ""){   
       error.textContent = "Please Enter a City Name";
         error.style.display = "block";
     }else{
