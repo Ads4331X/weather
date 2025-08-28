@@ -303,10 +303,13 @@ async function animegif(description) { // Renamed from updateBackground to match
         const response = await fetch(finalApiUrl);
         const data = await response.json();
         if (data.images && data.images.length > 0 && data.images[0].url) {
-            document.querySelector('.icon').href = data.images[0].url;
-            document.body.style.backgroundSize = 'cover';
-            document.body.style.backgroundPosition = 'center';
-            document.body.style.backgroundRepeat = 'no-repeat';
+            const iconElements = document.querySelectorAll('.icon'); 
+            if (iconElements.length > 0) {
+              iconElements.forEach(icon => {
+              icon.href = data.images[0].url;
+    });
+}
+           
         }
 
 
