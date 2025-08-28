@@ -197,6 +197,7 @@ function dayanddate(){
     return;
   }
   error.style.display = "none";
+  localStorage.setItem('lastLoadedCity', Cityname.value);
   card_title.textContent = currentdata.name;
   currentdata.weather[0].description = currentdata.weather[0].description.charAt(0).toUpperCase() + currentdata.weather[0].description.slice(1);
   weather.textContent = currentdata.weather[0].description;
@@ -232,7 +233,20 @@ function dayanddate(){
               ></i>&nbsp; ${currentdata.rain ? currentdata.rain["1h"] + " mm" : " 0mm"}`
 
               animegif(currentdata.weather[0].description);
+              
  }
+
+
+
+
+window.addEventListener('load', () => {
+    const savedCity = localStorage.getItem('lastLoadedCity');
+    if (savedCity) {
+        Cityname.value = savedCity;
+        fetchweatherdata();
+    }
+});
+
 
 
 // Remove the 'import nekos from "nekosapi";' line from the top of your script.js
